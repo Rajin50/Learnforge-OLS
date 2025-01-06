@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Student Details - LearnForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            color: #2c3e50;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .navbar .nav-buttons a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar .nav-buttons a:hover {
+            background-color: #555;
+        }
+
+        /* Heading */
+        h1, h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        /* Form */
+        form {
+            background:rgb(67, 81, 84);
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 70px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.8s ease;
+        }
+
+        form label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color:rgb(255, 255, 255);
+        }
+
+        form input {
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            border: 2px solid #dfe4ea;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border 0.3s ease;
+        }
+
+        form input:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+        }
+
+        form .btn {
+            background: #3498db;
+            color: #fff;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+            transition: background 0.3s ease;
+        }
+
+        form .btn:hover {
+            background: #2980b9;
+        }
+
+        form .btn-delete {
+            background: #e74c3c;
+        }
+
+        form .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 70px;
+        }
+
+        table thead {
+            background: #3498db;
+            color: #fff;
+        }
+
+        table th, table td {
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        table tbody tr:hover {
+            background: #f7f9fc;
+        }
+
+        /* Chart Section */
+        .bar-chart {
+            text-align: center;
+            margin: 5px 0;
+        }
+
+        .bar-chart img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Go Back Button */
+        .btn-back {
+            display: inline-block;
+            background: #7f8c8d;
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            text-align: center;
+        }
+
+        .btn-back:hover {
+            background: #2c3e50;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+            }
+
+            form {
+                padding: 20px;
+            }
+
+            table, form input, form .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">LearnForge</div>
+        <div class="nav-buttons">
+            <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('all_students') }}">All Students</a>
+            <a href="#">All Instructors</a>
+            <a href="{{ url_for('i_register') }}">Add Instructors</a>
+            <a href="{{ url_for('a_profile') }}">Profile</a>
+            <a href="{{ url_for('a_logout') }}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1>Student Details</h1>
+        <div class="profile">
+            
+            <form method="POST" action="{{ url_for('student_info', student_id=student[0]) }}">
+
+                <label for="student_id">Student ID</label>
+                <input type="text" id="student_id" name="student_id" value="{{ student[0] }}" readonly>
+
+                <label for="name">Student Name</label>
+                <input type="text" id="name" name="name" value="{{ student[1] }}" required>
+
+                <label for="phone_no">Phone No</label>
+                <input type="text" id="phone_no" name="phone_no" value="{{ student[2] }}" required>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" value="{{ student[3] }}" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" value="{{ student[4] }}" required>
+
+                <label for="current_institute">Current Institute</label>
+                <input type="text" id="current_institute" name="current_institute" value="{{ student[5] }}" required>
+
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" value="{{ student[6] }}" required>
+
+                <label for="date_of_birth">Date of Birth</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" value="{{ student[7] }}" required>
+
+                <label for="blood_group">Blood Group</label>
+                <input type="text" id="blood_group" name="blood_group" value="{{ student[8] }}" required>
+
+                <button type="submit" class="btn">Update Data</button>    
+            </form>
+
+            <h2>Enrolled Courses Info</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Course Code</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for course in enrolled_courses %}
+                    <tr>
+                        <td>{{ course[0] }}</td>
+                        <td>{{ course[1] }}</td>
+                        <td>{{ course[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="bar-chart">
+                <h2>Student's Performance Analysis</h2>
+                <img src="{{ url_for('static', filename=chart_url) }}" alt="Completion Status Chart" class="bar-chart">
+            </div>
+
+            <form method="POST" action="{{ url_for('delete_student', student_id=student[0]) }}">
+                <button type="submit" class="btn btn-delete">Delete Student</button>
+            </form>
+
+            <a href="{{ url_for('all_students') }}" class="btn btn-back">Go Back</a>
+        </div>
+    </div>    
+
+</body>
+</html>
+

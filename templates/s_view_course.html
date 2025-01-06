@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details - LearnForge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            font-size: 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .navbar .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .navbar .nav-links a:hover {
+            background-color: #555;
+        }
+
+        /* Main Layout */
+        .container {
+            display: flex;
+            margin-top: 70px;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        /* Left Section: Course Details */
+        .course-details {
+            flex: 7; /* 70% of the screen */
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-details h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .course-details .outline {
+            margin-bottom: 20px;
+        }
+
+        .course-details .outline a {
+            display: inline-block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-details .outline a:hover {
+            background-color: #0056b3;
+        }
+
+        .course-details .module {
+            margin-bottom: 30px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .course-details .module:last-child {
+            border-bottom: none;
+        }
+
+        .course-details .module h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .course-details .module p {
+            margin: 5px 0;
+            font-weight: bold;
+        }
+
+        .course-details .module a {
+            display: inline-block;
+            margin: 10px 0;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .course-details .module a:hover {
+            background-color: #0056b3;
+        }
+
+        .course-details iframe {
+            width: 100%;
+            height: 540px;
+            border: none;
+            border-radius: 10px;
+        }
+
+        /* Styling for Deadline (Card) */
+        .course-details .module p:last-child {
+            background-color: #f7f7f7;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #333;
+            font-weight: bold;
+        }
+
+
+        /* Assignment form */
+        .module form {
+            margin-top: 15px;
+        }
+
+        .module form input[type="file"] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .module form button {
+            width: 15%;
+            font-weight: bold;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .module form button:hover {
+            background-color: #0056b3;
+        }
+
+        .module .message {
+            color: red;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .assignment-marks {
+            width: 40%;
+            margin-top: 10px;
+            color: #28a745;
+            font-weight: bold;
+            font-size: 18px;
+            background-color: #e9f7ef;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+
+        /* Sidebar */
+        .sidebar {
+            flex: 3; /* 30% of the screen */
+            background: #333;
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+        }
+
+        .sidebar h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ffcc00;
+            font-weight: bold;
+        }
+        
+        .leaderboard {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .leaderboard li {
+            background-color: #444;
+            color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 18px;
+            font-weight: 500;
+            text-align: center;
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .leaderboard li:hover {
+            transform: scale(1.05);
+            background-color: #555;
+        }
+
+        .feedback-section {
+            margin-top: 20px; /* Add spacing from other sidebar content */
+            background-color: #444; /* Ensure contrast with sidebar */
+            padding: 15px; /* Reduce padding to fit within sidebar */
+            border-radius: 8px; /* Keep consistent styling */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Match sidebar's aesthetic */
+        }
+        
+    
+        .feedback-section h2 {
+            margin-bottom: 20px;
+            color: #ffcc00;
+        }
+    
+        
+        .feedback-box {
+            max-height: 200px; /* Limit height to fit within sidebar */
+            overflow-y: auto; /* Enable scrolling for overflowing content */
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+            background-color:rgb(224, 218, 101); /* Slightly off-white for distinction */
+            color: #333;
+        }
+    
+        .feedback-item {
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+    
+        .feedback-item:last-child {
+            border-bottom: none;
+        }
+    
+        .feedback-item p {
+            margin: 5px 0;
+        }
+    
+        textarea {
+            width: 100%;
+            height: 80px; /* Reduce height for a compact fit */
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: none;
+            background-color:rgb(224, 218, 101);
+        }
+    
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 15px; /* Adjust button size */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: block; /* Ensure it spans full width */
+            width: 100%; /* Full width for consistency */
+            text-align: center;
+        }
+    
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Exam Button */
+        .exam {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .exam button {
+            background-color: #ffcc00;
+            color: #333;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .exam button:hover {
+            background-color: #ff9900;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            .module h2 {
+                font-size: 18px;
+            }
+
+            .sidebar {
+                flex: 1;
+            }
+
+            .course-details {
+                flex: 1;
+            }
+
+            .leaderboard li {
+                font-size: 16px;
+                padding: 10px;
+            }
+
+            .feedback-section {
+                padding: 10px;
+                margin-top: 15px;
+            }
+        
+            .feedback-box {
+                max-height: 150px;
+            }
+        
+            textarea {
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="logo">LearnForge</div>
+        <div class="nav-links">
+            <a href="{{ url_for('student_dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('get_courses') }}">Browse Courses</a>
+            <a href="{{ url_for('profile') }}">Profile</a>
+            <a href="{{ url_for('certifications') }}">Certifications</a>
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Left Section: Course Details -->
+        <div class="course-details">
+            <h1>{{ course_name }}</h1>
+            <div class="outline">
+                <h2>Course Outline</h2>
+                {% if content and content[0][1] %}
+                <!-- Link to Course Outline (PDF) -->
+                <a href="{{ url_for('static', filename='uploads/' + content[0][1]) }}" target="_blank">View Course Outline</a>
+                {% else %}
+                <p>No course outline available.</p>
+                {% endif %}
+            </div>
+        
+            {% if content %}
+            {% for module in content %}
+            <div class="module">
+                <h2>Module {{ module[0] }}</h2>
+                
+                <!-- View PDF File -->
+                <p>View Content File: 
+                    <a href="{{ url_for('static', filename='uploads/' + module[2]) }}" target="_blank">Open PDF</a>
+                </p>
+                
+                
+                <!-- View Module Video -->
+                <p>Module Video: 
+                    <iframe src="{{ module[3]|replace('watch?v=', 'embed/') }}" allowfullscreen></iframe>
+                </p>
+
+                <!-- View Assignment -->
+                <p>View Assignment: 
+                    <a href="{{ url_for('static', filename='uploads/' + module[4]) }}" target="_blank">Open Assignment</a>
+                </p>
+
+                <!-- Assignment Deadline -->
+                <p>Deadline: {{ module[5] }}</p>
+
+                <!-- Submit Assignment -->
+                <p>Submit Assignment:</p>
+                <form action="{{ url_for('submit_assignment', course_code=course_code, module_no=module[0]) }}" method="post" enctype="multipart/form-data">
+                    {% if assignment_status[module[0]].submitted %}
+                        <input type="file" name="assignment_file" accept=".pdf" disabled>
+                        <button type="submit" disabled>Submit</button>
+                        <p style="color: red; font-weight: bold;">You've already submitted your assignment for this module!</p>
+                        <!-- Display Assignment Marks -->
+                        {% if assignment_status[module[0]]['marks'] is not none %}
+                        <p class="assignment-marks">Your Assignment Marks: {{ assignment_status[module[0]]['marks'] }} out of 10</p>
+                        {% endif %}
+                        {% if assignment_status[module[0]].late %}
+                        <p style="color: orange; font-weight: bold;">You've submitted a late assignment!</p>
+                        {% endif %}
+                    {% else %}
+                        <input type="file" name="assignment_file" accept=".pdf" required>
+                        <button type="submit">Submit</button>
+                    {% endif %}
+                </form>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Currently the course has no modules!</p>
+            {% endif %}
+
+            <!-- Exam Section -->
+            <div class="exam">
+                {% if exam_attempted %}
+                <button id="start-exam" disabled style="background-color: #ccc; cursor: not-allowed;">
+                    Exam
+                </button>
+                <p style="color: green; font-weight: bold; margin-top: 10px;">
+                    You've already participated in the exam for this course!
+                </p>
+                <p style="color: #333; margin-top: 5px;">
+                    Your Exam Score: {{ total_mark }}
+                </p>
+                {% else %}
+                <button id="start-exam" onclick="startExam()">Exam</button>
+                {% endif %}
+            </div>
+            <script>
+                function startExam() {
+                    const courseCode = {{ course_code }};
+                    fetch(`/get_exam_page/${courseCode}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.exam_page) {
+                                window.location.href = `/${data.exam_page}/${courseCode}`;
+                            } else {
+                                alert("Exam page not found for this course.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error fetching exam page:", error);
+                            alert("An error occurred. Please try again.");
+                        });
+                }
+            </script>
+        </div>
+
+        <!-- Right Section: Course Info -->
+        <div class="sidebar">
+            <h2>Student Leaderboard (Top- 5)</h2>
+            <ul class="leaderboard">
+                {% if leaderboard %}
+                    {% for student in leaderboard %}
+                        <li>{{ loop.index }}. {{ student }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No leaderboard data available.</li>
+                {% endif %}
+            </ul>
+
+            <!-- Feedback Section -->
+            <div class="feedback-section">
+                <h2>Student Feedback</h2>
+                <div class="feedback-box">
+                    {% if feedbacks %}
+                        {% for feedback in feedbacks %}
+                            <div class="feedback-item">
+                                <p><strong>{{ feedback[0] }}</strong>:</p>
+                                <p>{{ feedback[1] }}</p>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No feedbacks yet. Be the first to leave feedback!</p>
+                    {% endif %}
+                </div>
+                <form action="{{ url_for('submit_feedback', course_code=course_code) }}" method="POST">
+                    <textarea name="feedback" placeholder="Write your feedback here..." required></textarea>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
