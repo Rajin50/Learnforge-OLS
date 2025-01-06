@@ -1,0 +1,268 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom right, #f3f4f6, #e5e7eb);
+    color: #333;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1f2937;
+    color: #fff;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ensure navbar spans the entire width */
+}
+
+.navbar .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    text-transform: uppercase;
+}
+
+.navbar .nav-buttons a {
+    color: #f9fafb;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar .nav-buttons a:hover {
+    color: #60a5fa;
+}
+
+/* Container and Form */
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+    font-size: 2rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.container h1:after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #60a5fa;
+    margin: 0.5rem auto;
+}
+
+form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+}
+
+form input[type="text"],
+form input[type="file"],
+form input[type="url"],
+form input[type="date"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+form input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+}
+
+.btn-create {
+    display: inline-block;
+    width: 100%;
+    background: #1f2937;
+    color: #fff;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-create:hover {
+    background: #60a5fa;
+}
+
+.message {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    background-color: #d1fae5;
+    color: #065f46;
+    text-align: center;
+}
+
+/* Modules Section */
+#module-section {
+    margin-top: 2rem;
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#module-section h2 {
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 1rem;
+    color: #1f2937;
+    text-align: center;
+}
+
+#add-module-button {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1.5rem;
+    background: #226669;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#add-module-button:hover {
+    background: #388c90;
+}
+
+.module-form {
+    margin-top: 1.5rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.module-form h3 {
+    font-size: 1.25rem;
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.module-form label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #4b5563;
+}
+
+.module-form input[type="file"],
+.module-form input[type="url"],
+.module-form input[type="date"] {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 5px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.module-form input:focus {
+    border-color: #417cc4;
+    box-shadow: 0 0 5px rgba(96, 165, 250, 0.5);
+}
+
+.create-module-button {
+    background: #28364a;
+    color: #fff;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: block;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.create-module-button:hover {
+    background: #415e81;
+}
+
+.success-message {
+    margin-top: 1.5rem;
+    padding: 0.8rem;
+    border-radius: 5px;
+    background-color: #d1fae5;
+    color: #065f46;
+    text-align: center;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    form input[type="text"],
+    form input[type="file"],
+    form input[type="url"],
+    form input[type="date"] {
+        padding: 0.6rem;
+    }
+
+    .module-form input[type="file"],
+    .module-form input[type="url"],
+    .module-form input[type="date"] {
+        padding: 0.8rem;
+    }
+
+    #add-module-button,
+    .btn-create {
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+}
